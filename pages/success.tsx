@@ -20,19 +20,16 @@ export default class success extends Component {
               width="200px"
               height="200px"
             />
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Welcome to GateKeeper
-            </h2>
           </div>
           <div>
+            <h2 className="mb-6 text-center text-xl font-extrabold text-gray-900">
+              Access Approved
+            </h2>
             <img
               className="mx-auto h-48 w-auto"
               src="https://www.svgrepo.com/show/13650/success.svg"
               alt="Workflow"
             />
-            <h2 className="mt-6 text-center text-xl font-extrabold text-gray-900">
-              Access Approved
-            </h2>
           </div>
         </div>
       </div>
