@@ -47,8 +47,8 @@ Open [http://localhost:3000](http://localhost:3000)
 
 If you prefer to use your own instance of the SleepyKoala contract:
 
-1. `yarn deploy:rinkeby`
-2. `yarn compile`
+1. `yarn compile`
+2. `yarn deploy:rinkeby`
 3. Update `contractAddress` in [Minter.tsx](components/Minter.tsx) with the contract address returned in step 2.
 4. Restart the application.
 
