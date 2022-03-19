@@ -152,11 +152,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
                 <div>
                   <div className="mt-6">
                     <h2 className="text-l text-gray-600">
-                      {hasTrueNft
-                        ?
-                          "Congrats you have the correct NFT token"
-                        : 
-                          `Unfortunately your NFT doesn't meet the conditions for entry `}
+                      {!hasTrueNft && `Unfortunately your NFT doesn't meet the conditions for entry `}
                     </h2>
                   </div>
 
