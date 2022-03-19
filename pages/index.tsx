@@ -19,6 +19,8 @@ import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import Head from "next/head";
 import Minter from "../components/Minter";
+import Image from "next/image";
+import picture from "../public/gatekeeper.svg";
 
 declare global {
   interface Window {
@@ -54,11 +56,12 @@ export default function Example() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="max-w-md w-full space-y-8">
-        <div>
-          <img
-            className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-            alt="Workflow"
+        <div className="text-center">
+          <Image
+            src={picture}
+            alt="GateKeeper"
+            width="200px"
+            height="200px"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Welcome to GateKeeper
