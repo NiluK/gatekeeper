@@ -23,6 +23,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tailwindcss": "^3.0.23",
+    "typechain": "^7.0.1",
     "web3": "^1.7.1"
   },
   "devDependencies": {
