@@ -44,3 +44,4 @@ artifacts
 typechain-types
 dist
 
+/.vscode
