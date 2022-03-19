@@ -28,7 +28,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
   const [loading, setLoading] = useState(false);
   const [hasNft, setHasNft] = useState(false);
   const [hasTrueNft, setHasTrueNft] = useState(false);
-  const [tokenId, setTokenId] = useState(0);
+  const [tokenId, setTokenId] = useState("");
 
   const mintNFT = async () => {
     try {
@@ -39,14 +39,12 @@ const Minter: React.FC<Props> = ({ wallet }) => {
       );
       const signer = provider.getSigner();
       const nftContract = new ethers.Contract(
-        "0x90dE6E6bBb75554F4FB9F6C449A9aAdd6bBB1FA9",
+        "0xd410dc6422Bc3ECc6B8fEcF27613A2b7c302556c",
         NFT.abi,
         signer
       );
 
       setLoading(true);
-
-      console.log("loading", loading);
 
       let nftTx = await nftContract.functions.mint(wallet, false);
       console.log("Mining....", nftTx.hash);
@@ -78,33 +76,55 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     const signer = provider.getSigner();
 
     const nftContract = new ethers.Contract(
-      "0x90dE6E6bBb75554F4FB9F6C449A9aAdd6bBB1FA9",
+      "0xd410dc6422Bc3ECc6B8fEcF27613A2b7c302556c",
       NFT.abi,
       signer
     );
 
-    console.log("contractTX", contractTX);
     const tokenId = contractTX.logs[0].topics[3];
     const tokenInt = ethers.BigNumber.from(tokenId);
     const token = formatFixed(tokenInt, 0);
-    
+    setTokenId(token);
+
     nftContract.getTokenData(token).then((data: any) => {
       setHasTrueNft(data);
     });
   }
 
-  function handleClickInvert(e: React.MouseEvent<HTMLElement>) {
-    e.preventDefault();
-    setLoading(true);
-    // interact with contract
-    setLoading(false);
+  function invertNft(tokenId) {
+    const { ethereum } = window;
+
+    const provider = new ethers.providers.Web3Provider(
+      ethereum,
+      window.ethereum.givenProvider
+    );
+    const signer = provider.getSigner();
+
+    const nftContract = new ethers.Contract(
+      "0xd410dc6422Bc3ECc6B8fEcF27613A2b7c302556c",
+      NFT.abi,
+      signer
+    );
+
+    nftContract.functions.setTokenData(tokenId, !hasTrueNft).then((data: any) => {
+      console.log(data);
+      console.log(data.value);
+      const tokenInt = ethers.BigNumber.from(data.value);
+      const token = formatFixed(tokenInt, 0);
+      console.log(token);
+      setHasTrueNft(!!token);
+    });
   }
+
 
   // useEffect(() => {
   //   getNFTdata(1);
   // }, []);
 
   const NFTsymbol = 'KOL';
+
+
+  console.log("hasTrueNft", hasTrueNft);
 
   return (
     <>
@@ -136,14 +156,16 @@ const Minter: React.FC<Props> = ({ wallet }) => {
                 <div>
                   <div className="mt-6">
                     <h2 className="text-l text-gray-600">
-                      {`You have minted ${NFTsymbol}`}
+                      {hasTrueNft
+                        ? "Congrats you have the correct NFT token"
+                        : `Unfortunately your NFT doesn't meet the conditions for entry `}
                     </h2>
                   </div>
 
                   <div className="mt-6 md:mt-8">
                     <button
                       className="w-full md:w-auto text-sm bg-gray-500 px-4 py-2 text-white rounded-3xl font-medium hover:bg-blue-600"
-                      onClick={handleClickInvert}
+                      onClick={() => invertNft(tokenId)}
                     >
                       Invert {NFTsymbol}
                     </button>
