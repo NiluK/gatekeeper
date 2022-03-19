@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import NFT from "../artifacts/contracts/SleepyKoala.sol/ISleepyKoala.json";
+import { formatFixed } from "@ethersproject/bignumber";
 
 interface Props {
   wallet: string;
@@ -85,12 +86,9 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     console.log("contractTX", contractTX);
     const tokenId = contractTX.logs[0].topics[3];
     const tokenInt = ethers.BigNumber.from(tokenId);
-    // const address = ethers.utils.getAddress(contractTX);
-
-    console.log("tokenId", tokenId);
-    console.log("tokenInt", tokenInt);
-
-    nftContract.getTokenData(tokenInt).then((data: any) => {
+    const token = formatFixed(tokenInt, 0);
+    
+    nftContract.getTokenData(token).then((data: any) => {
       setHasTrueNft(data);
     });
   }
