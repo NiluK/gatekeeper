@@ -29,6 +29,7 @@ declare global {
 
 export default function Example() {
   const [wallet, setWallet] = useState("");
+  const [hasNft, setHasNft] = useState(false);
 
   const connectWallet = async () => {
     const provider = new ethers.providers.Web3Provider(
@@ -79,10 +80,7 @@ export default function Example() {
             </button>
           ) : (
             <div>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Welcome {wallet}
-              </h2>
-              <Minter />
+              <Minter wallet={wallet} hasNft={hasNft} setHasNft={setHasNft} />
             </div>
           )}
         </div>
