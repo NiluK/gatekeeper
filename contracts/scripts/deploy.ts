@@ -6,12 +6,15 @@
 import { ethers } from "hardhat";
 
 async function main() {
+  // const SleepyKoala = await ethers.getContractFactory("SleepyKoala");
+  // const contract = await SleepyKoala.deploy();
+  // await contract.deployed();
+  // console.log("SleepyKoala deployed to:", contract.address);
+
+  const koalaAddress = "0x90dE6E6bBb75554F4FB9F6C449A9aAdd6bBB1FA9";
   const Gatekeeper = await ethers.getContractFactory("Gatekeeper");
-
-  const contract = await Gatekeeper.deploy();
-
+  const contract = await Gatekeeper.deploy(koalaAddress);
   await contract.deployed();
-
   console.log("Gatekeeper deployed to:", contract.address);
 }
 
