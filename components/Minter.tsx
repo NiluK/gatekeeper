@@ -4,6 +4,8 @@ import NFT from "../artifacts/contracts/SleepyKoala.sol/ISleepyKoala.json";
 import { formatFixed } from "@ethersproject/bignumber";
 import { useRouter } from "next/router";
 
+const contractAddress = "0x8e1Ef80410758A45387E3777bba7cA814Be61B8E";
+
 interface Props {
   wallet: string;
   hasNft: boolean;
@@ -42,7 +44,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
       );
       const signer = provider.getSigner();
       const nftContract = new ethers.Contract(
-        "0x8e1Ef80410758A45387E3777bba7cA814Be61B8E",
+        contractAddress,
         NFT.abi,
         signer
       );
@@ -80,7 +82,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     const signer = provider.getSigner();
 
     const nftContract = new ethers.Contract(
-      "0x8e1Ef80410758A45387E3777bba7cA814Be61B8E",
+      contractAddress,
       NFT.abi,
       signer
     );
@@ -105,7 +107,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     const signer = provider.getSigner();
 
     const nftContract = new ethers.Contract(
-      "0x8e1Ef80410758A45387E3777bba7cA814Be61B8E",
+      contractAddress,
       NFT.abi,
       signer
     );

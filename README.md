@@ -33,12 +33,24 @@ PRIVATE_KEY=...
 COINMARKETCAP_API_KEY=...
 ```
 
+Compile the contract:
+
+`yarn compile`
+
 Start the application:
 
 `yarn run dev`
 
 Open [http://localhost:3000](http://localhost:3000) 
 
+### Deploying Your Own Contract
+
+If you prefer to use your own instance of the SleepyKoala contract:
+
+1. `yarn deploy:rinkeby`
+2. `yarn compile`
+3. Update `contractAddress` in [Minter.tsx](components/Minter.tsx) with the contract address returned in step 2.
+4. Restart the application.
 
 ## Usage
 
