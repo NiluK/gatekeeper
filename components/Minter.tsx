@@ -58,7 +58,6 @@ const Minter: React.FC<Props> = ({ wallet }) => {
 
       setHasNft(true);
       setLoading(false);
-      router.push("/success");
       console.log(
         `Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTx.hash}`
       );
@@ -125,6 +124,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
           setHasTrueNft(data);
           setErrorMessage("");
           setLoading(false);
+          router.push("/success");
         });
       })
       .catch(() => {
