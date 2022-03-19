@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import NFT from "../artifacts/contracts/SleepyKoala.sol/ISleepyKoala.json";
 import { formatFixed } from "@ethersproject/bignumber";
+import { useRouter } from "next/router";
 
 interface Props {
   wallet: string;
@@ -29,6 +30,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
   const [hasNft, setHasNft] = useState(false);
   const [hasTrueNft, setHasTrueNft] = useState(false);
   const [tokenId, setTokenId] = useState("");
+  const router = useRouter();
 
   const mintNFT = async () => {
     try {
@@ -54,6 +56,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
       console.log("Mined!", tx);
 
       setHasNft(true);
+      router.push("/success")
 
       setLoading(false);
       console.log(
@@ -149,9 +152,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
                 <div>
                   <div className="mt-6">
                     <h2 className="text-l text-gray-600">
-                      {hasTrueNft
-                        ? "Congrats you have the correct NFT token"
-                        : `Unfortunately your NFT doesn't meet the conditions for entry `}
+                      {!hasTrueNft && `Unfortunately your NFT doesn't meet the conditions for entry `}
                     </h2>
                   </div>
 
