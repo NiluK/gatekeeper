@@ -11,7 +11,7 @@ async function main() {
   // await contract.deployed();
   // console.log("SleepyKoala deployed to:", contract.address);
 
-  const koalaAddress = "0x90dE6E6bBb75554F4FB9F6C449A9aAdd6bBB1FA9";
+  const koalaAddress = "0xd410dc6422Bc3ECc6B8fEcF27613A2b7c302556c";
   const Gatekeeper = await ethers.getContractFactory("Gatekeeper");
   const contract = await Gatekeeper.deploy(koalaAddress);
   await contract.deployed();
