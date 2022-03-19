@@ -12,6 +12,8 @@ interface ISleepyKoala is IERC721, IERC721Enumerable {
     function getTokenData(uint256 tokenId) external view returns (bool);
 
     function setTokenData(uint256 tokenId, bool data) external returns (bool);
+
+    function invertTokenData(uint256 tokenId) external returns (bool);
 }
 
 contract SleepyKoala is ISleepyKoala, ERC721Enumerable {
@@ -40,6 +42,13 @@ contract SleepyKoala is ISleepyKoala, ERC721Enumerable {
     function setTokenData(uint256 tokenId, bool data) external returns (bool) {
         _setTokenData(tokenId, data);
         return data;
+    }
+
+    function invertTokenData(uint256 tokenId) external returns (bool) {
+        bool data = getTokenData(tokenId);
+        bool newData = !data;
+        _setTokenData(tokenId, newData);
+        return newData;
     }
 
     function getTokenData(uint256 tokenId) public view returns (bool) {
