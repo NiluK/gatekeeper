@@ -39,7 +39,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
       );
       const signer = provider.getSigner();
       const nftContract = new ethers.Contract(
-        "0xd410dc6422Bc3ECc6B8fEcF27613A2b7c302556c",
+        "0x8e1Ef80410758A45387E3777bba7cA814Be61B8E",
         NFT.abi,
         signer
       );
@@ -66,7 +66,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     }
   };
 
-  function getNFTdata(contractTX) {
+  function getNFTdata(contractTX: any) {
     const { ethereum } = window;
 
     const provider = new ethers.providers.Web3Provider(
@@ -76,7 +76,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     const signer = provider.getSigner();
 
     const nftContract = new ethers.Contract(
-      "0xd410dc6422Bc3ECc6B8fEcF27613A2b7c302556c",
+      "0x8e1Ef80410758A45387E3777bba7cA814Be61B8E",
       NFT.abi,
       signer
     );
@@ -86,12 +86,12 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     const token = formatFixed(tokenInt, 0);
     setTokenId(token);
 
-    nftContract.getTokenData(token).then((data: any) => {
+    nftContract.getTokenData(token).then((data: boolean) => {
       setHasTrueNft(data);
     });
   }
 
-  function invertNft(tokenId) {
+  function invertNft(tokenId: string) {
     const { ethereum } = window;
 
     const provider = new ethers.providers.Web3Provider(
@@ -101,31 +101,24 @@ const Minter: React.FC<Props> = ({ wallet }) => {
     const signer = provider.getSigner();
 
     const nftContract = new ethers.Contract(
-      "0xd410dc6422Bc3ECc6B8fEcF27613A2b7c302556c",
+      "0x8e1Ef80410758A45387E3777bba7cA814Be61B8E",
       NFT.abi,
       signer
     );
 
-    nftContract.functions.setTokenData(tokenId, !hasTrueNft).then((data: any) => {
-      console.log(data);
-      console.log(data.value);
-      const tokenInt = ethers.BigNumber.from(data.value);
-      const token = formatFixed(tokenInt, 0);
-      console.log(token);
-      setHasTrueNft(!!token);
+    nftContract.functions.invertTokenData(tokenId).then(async (data: any) => {
+      let tx = await data.wait();
+      console.log("Mined!", tx);
+      console.log(
+        `Mined, see transaction: https://rinkeby.etherscan.io/tx/${data.hash}`
+      );
+      nftContract.getTokenData(tokenId).then((data: any) => {
+        console.log("getTokenData", data);
+        setHasTrueNft(data);
+      });
     });
   }
-
-
-  // useEffect(() => {
-  //   getNFTdata(1);
-  // }, []);
-
-  const NFTsymbol = 'KOL';
-
-
-  console.log("hasTrueNft", hasTrueNft);
-
+  const NFTsymbol = "KOL";
   return (
     <>
       <div className="relative p-5 bg-white rounded-lg shadow mt-4">
