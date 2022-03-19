@@ -45,7 +45,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ### Deploying Your Own Contract
 
-If you prefer to use your own instance of the SleepKoala contract:
+If you prefer to use your own instance of the SleepyKoala contract:
 
 1. `yarn deploy:rinkeby`
 2. `yarn compile`
