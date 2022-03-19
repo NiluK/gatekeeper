@@ -104,6 +104,8 @@ const Minter: React.FC<Props> = ({ wallet }) => {
   //   getNFTdata(1);
   // }, []);
 
+  const NFTsymbol = 'KOL';
+
   return (
     <>
       <div className="relative p-5 bg-white rounded-lg shadow mt-4">
@@ -116,7 +118,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
               <div>
                 <div className="mt-6">
                   <h2 className="text-l text-gray-600">
-                    You need to mint NFTX
+                    You need to mint {NFTsymbol}
                   </h2>
                 </div>
 
@@ -125,7 +127,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
                     className="w-full md:w-auto text-sm bg-gray-500 px-4 py-2 text-white rounded-3xl font-medium hover:bg-blue-600"
                     onClick={() => mintNFT()}
                   >
-                    {loading ? "Minting..." : "Mint NFTX"}
+                    {loading ? "Minting..." : `Mint ${NFTsymbol}`}
                   </button>
                 </div>
               </div>
@@ -134,7 +136,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
                 <div>
                   <div className="mt-6">
                     <h2 className="text-l text-gray-600">
-                      {`You have minted NFTX`}
+                      {`You have minted ${NFTsymbol}`}
                     </h2>
                   </div>
 
@@ -143,7 +145,7 @@ const Minter: React.FC<Props> = ({ wallet }) => {
                       className="w-full md:w-auto text-sm bg-gray-500 px-4 py-2 text-white rounded-3xl font-medium hover:bg-blue-600"
                       onClick={handleClickInvert}
                     >
-                      Invert NFTX
+                      Invert {NFTsymbol}
                     </button>
                   </div>
                 </div>
