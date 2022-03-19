@@ -44,8 +44,6 @@ const Minter: React.FC<Props> = ({ wallet, hasNft, setHasNft }) => {
       <div className="relative p-5 bg-white rounded-lg shadow mt-4">
         <div className="relative">
           <div className="text-center">
-            <h1 className="text-xl font-medium text-gray-800">GateKeeper</h1>
-
             <div className="mt-8 text-center">
               <h2 className="text-l">Welcome {wallet}</h2>
             </div>

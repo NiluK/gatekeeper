@@ -61,7 +61,7 @@ export default function Example() {
             alt="Workflow"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Welcome to the dApp
+            Welcome to GateKeeper
           </h2>
         </div>
         <div>
