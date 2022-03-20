@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "hardhat clean",
-    "compile": "hardhat compile",
-    "hardhat:rinkeby": "hardhat --network rinkeby",
-    "test:rinkeby": "npm run hardhat:rinkeby run ./scripts/run.ts",
-    "deploy:rinkeby": "npm run hardhat:rinkeby run ./scripts/deploy.ts"
+    "sol:clean": "hardhat clean",
+    "sol:compile": "hardhat compile",
+    "sol:hardhat:rinkeby": "hardhat --network rinkeby",
+    "sol:test": "hardhat test",
+    "sol:test:rinkeby": "npm run hardhat test",
+    "sol:deploy:rinkeby": "npm run sol:hardhat:rinkeby run ./scripts/deploy.ts"
   },
   "dependencies": {
     "@ethersproject/bignumber": "^5.6.0",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.4",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@openzeppelin/contracts": "^4.4.2",
     "@typechain/ethers-v5": "^9.0.0",
     "@typechain/hardhat": "^4.0.0",
@@ -35,6 +37,7 @@
     "@types/mocha": "^9.1.0",
     "@types/node": "17.0.21",
     "@types/react": "17.0.40",
+    "chai": "^4.3.6",
     "dotenv": "^14.3.2",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
