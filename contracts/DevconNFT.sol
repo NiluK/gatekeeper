@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 interface IDevconNFT {
-    function mint(address holder, string memory tokenURI) external;
+    function mint(address holder) external returns (uint256);
 }
 
 contract DevconNFT is IDevconNFT, ERC721 {
@@ -17,12 +17,11 @@ contract DevconNFT is IDevconNFT, ERC721 {
         // init
     }
 
-    function mint(address holder, string memory tokenURI) external {
+    function mint(address holder) external returns (uint256) {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
         _safeMint(holder, newItemId);
-        _setTokenURI(newItemId, tokenURI);
 
         return newItemId;
     }
