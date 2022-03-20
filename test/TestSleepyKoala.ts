@@ -46,7 +46,11 @@ describe("SleepKoala", function () {
     expect(tokenData).to.equal(false);
   });
 
-  it("#setTokenData", async function () {});
+  it("#setTokenData", async function () {
+    //TODO
+  });
 
-  it("#invertTokenData", async function () {});
+  it("#invertTokenData", async function () {
+    //TODO
+  });
 });
