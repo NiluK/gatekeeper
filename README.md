@@ -35,7 +35,7 @@ COINMARKETCAP_API_KEY=...
 
 Compile the contract:
 
-`yarn compile`
+`yarn sol:compile`
 
 Start the application:
 
@@ -43,12 +43,18 @@ Start the application:
 
 Open [http://localhost:3000](http://localhost:3000) 
 
+### Contract Tests
+
+To run the [tests](test/TestSleepyKoala.ts) for the contract functions:
+
+`yarn run sol:test`
+
 ### Deploying Your Own Contract
 
 If you prefer to use your own instance of the SleepyKoala contract:
 
-1. `yarn compile`
-2. `yarn deploy:rinkeby`
+1. `yarn sol:compile`
+2. `yarn sol:deploy:rinkeby`
 3. Update `contractAddress` in [Minter.tsx](components/Minter.tsx) with the contract address returned in step 2.
 4. Restart the application.
 
