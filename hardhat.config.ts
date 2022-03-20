@@ -1,8 +1,8 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "hardhat-gas-reporter";
 import "@typechain/hardhat";
-//https://github.com/nomiclabs/hardhat/tree/master/packages/hardhat-ethers
 //https://hardhat.org/guides/waffle-testing.html
+import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-ethers";
 
 import { config } from "./scripts/config";
